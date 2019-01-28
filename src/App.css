@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css?family=Pacifico|Roboto+Slab");
+
+body {
+  background-color: #4836444a;
+}
+
+nav {
+  background-color: #483644;
+}
+
+.auth {
+  background: url("./components/assets/lyric-background.jpeg") no-repeat
+    center/cover;
+  min-height: 93.7vh;
+  color: #fff;
+}
+
+.auth h1,
+.search h1,
+.dashboard h3 {
+  font-family: "Roboto Slab", serif;
+}
+
+.auth h2,
+.search h2 {
+  font-family: "Pacifico", cursive;
+  font-weight: 200;
+  letter-spacing: 4;
+}
+
+.search h2 {
+  color: #483644;
+}
+
+.auth .btn,
+form .btn,
+.track .btn {
+  background: #ed6c4c;
+  outline: none !important;
+}
+
+.auth .btn:hover {
+  color: #000 !important;
+  background: #e43a0f98;
+  border: 1px #000 solid;
+}

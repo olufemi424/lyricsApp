@@ -22,11 +22,11 @@ class Login extends Component {
     const { authError } = this.props;
     if (auth.uid) return <Redirect to="/" />;
     return (
-      <div className="login">
+      <div className="login auth">
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-center py-4">LyricsApp</h1>
+              <h1 className="display-4 text-center py-4">Lyricap</h1>
               <h2 className="text-center pb-3">Log In</h2>
               <form onSubmit={this.hanleSubmit}>
                 <div className="form-group">
@@ -49,14 +49,18 @@ class Login extends Component {
                     onChange={this.handleChange}
                   />
                 </div>
-                <input
-                  type="submit"
-                  className="btn btn-light btn-outline-dark  btn-block mt-4"
-                />
+                <button className="btn text-light btn-block mt-4">
+                  Log In
+                </button>
                 <div className="text-danger text-center py-3">
                   {authError ? <p>{authError}</p> : ""}
                 </div>
               </form>
+              <p className="text-center">
+                <a className="text-warning" href="login">
+                  Forget Password <span className="text-light">?</span>
+                </a>
+              </p>
             </div>
           </div>
         </div>

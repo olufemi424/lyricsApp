@@ -15,13 +15,14 @@ const SignedInLinks = props => {
         Logout
       </Link>
       <div
-        className="btn btn-dark"
+        className="btn btn-light"
         style={{
           marginLeft: "10px",
-          padding: "5px",
+          padding: "7px",
           borderRadius: "50%",
-          width: "35px",
-          height: "35px"
+          width: "40px",
+          height: "40px",
+          border: "2px #f4f4f4 solid"
         }}
       >
         {initials}

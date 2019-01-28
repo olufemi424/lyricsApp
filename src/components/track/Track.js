@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Track = props => {
   const { track } = props;
   return (
-    <div className="col-md-6">
+    <div className="col-md-6 track">
       <div className="card mb-4 shadow-sm">
         <div className="card-body">
           <h5>{track.track_name}</h5>
@@ -15,16 +15,13 @@ const Track = props => {
             </strong>
             : {track.track_name}
           </p>
-          <p className="card-text">
+          <p className="card-text ">
             <strong>
               <i className="fas fa-compact-disc" /> Album
             </strong>
-            : {track.album_name}
+            : <span className="font-italic">{track.album_name}</span>
           </p>
-          <Link
-            className="btn btn-dark btn-block"
-            to={`lyrics/track/${track.track_id}`}
-          >
+          <Link className="btn btn-block" to={`lyrics/track/${track.track_id}`}>
             <i className="fas fa-chevron-right" /> View Lyrics
           </Link>
         </div>

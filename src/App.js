@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Navbar from "./components/layouts/Navbar";
+import Navbar from "./components/layouts/Links/Navbar";
 import Login from "./components/layouts/auth/Login";
 import Signup from "./components/layouts/auth/Signup";
-import Tracks from "./components/Tracks";
-import Lyrics from "./components/Lyrics";
+import Tracks from "./components/track/Tracks";
+import Lyrics from "./components/track/Lyrics";
 import "./App.css";
 
 class App extends Component {
@@ -13,6 +13,7 @@ class App extends Component {
       <Router>
         <div className="App">
           <Navbar />
+
           <Switch>
             <Route exact path="/" component={Tracks} />
             <Route path="/login" component={Login} />

@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getTrackList } from "../store/actions/trackActions";
-import Spinner from "../components/layouts/Spinner";
+import { getTrackList } from "../../store/actions/trackActions";
+import Spinner from "../layouts/Spinner";
 import Track from "./Track";
+import Search from "./Search";
 import { Redirect } from "react-router-dom";
 
 class Tracks extends Component {
@@ -16,12 +17,19 @@ class Tracks extends Component {
     if (!auth.uid) return <Redirect to="/login" />;
 
     if (track_list === undefined || track_list.length === 0) {
-      return <Spinner />;
+      return (
+        <React.Fragment>
+          <Search />
+          <Spinner />
+        </React.Fragment>
+      );
     } else {
       return (
         <React.Fragment>
-          <div className="container">
+          <div className="container dashboard">
+            <Search />
             <h3 className="text-center py-4">{heading}</h3>
+
             <div className="row">
               {track_list.map(item => (
                 <Track key={item.track.track_id} track={item.track} />

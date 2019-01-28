@@ -22,7 +22,11 @@ const trackReducer = (state = initState, action) => {
         ...state,
         track_info: action.payload
       };
-
+    case "GET_SEARCH_TRACKS":
+      return {
+        ...state,
+        track_list: action.payload
+      };
     default:
       return state;
   }

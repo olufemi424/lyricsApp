@@ -62,3 +62,27 @@ const setLyricsInfo = data => {
     payload: data
   };
 };
+
+export const searchTrack = trackName => {
+  return dispatch => {
+    //make async call to api
+    return axios
+      .get(
+        `https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.search?q_track=${trackName}&page_size=10&page=1&s_track_rating=desc&apikey=${
+          process.env.REACT_APP_MM_KEY
+        }`
+      )
+      .then(({ data }) => {
+        dispatch(setSearchTrack(data.message.body.track_list));
+      })
+      .catch(err => console.log(err));
+  };
+};
+
+// set state to tracks
+const setSearchTrack = data => {
+  return {
+    type: "GET_SEARCH_TRACKS",
+    payload: data
+  };
+};
