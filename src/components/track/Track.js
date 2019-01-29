@@ -15,7 +15,7 @@ const Track = props => {
             </strong>
             : {track.track_name}
           </p>
-          <p className="card-text ">
+          <p className="card-text album">
             <strong>
               <i className="fas fa-compact-disc" /> Album
             </strong>

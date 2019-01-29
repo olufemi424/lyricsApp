@@ -38,7 +38,7 @@ class Lyrics extends Component {
             <div className="card">
               <div className="card-header">
                 <h4 className="py-3">
-                  <i class="fas fa-music" /> {track.track_name} by{" "}
+                  <i className="fas fa-music" /> {track.track_name} by{" "}
                   {track.artist_name}
                 </h4>
                 <h5>
