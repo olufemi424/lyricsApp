@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+
 import { signUp } from "../../../store/actions/authActions";
 
 class Login extends Component {
@@ -18,7 +19,7 @@ class Login extends Component {
   };
 
   render() {
-    const { auth, authError } = this.props;
+    const { authError, auth } = this.props;
     if (auth.uid) return <Redirect to="/" />;
     return (
       <div className="signup auth">
@@ -81,6 +82,13 @@ class Login extends Component {
                   {authError ? <p>{authError}</p> : ""}
                 </div>
               </form>
+              <p className="text-center">
+                New user ?{" "}
+                <Link className="text-light" to="/login">
+                  {" "}
+                  <span className="useroptiontext">Login </span>{" "}
+                </Link>
+              </p>
             </div>
           </div>
         </div>
@@ -96,10 +104,8 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    signUp: data => dispatch(signUp(data))
-  };
+const mapDispatchToProps = {
+  signUp
 };
 
 export default connect(

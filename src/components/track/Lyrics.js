@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Spinner from "../layouts/Spinner";
+import Spinner from "../layouts/commons/Spinner";
 import { connect } from "react-redux";
 import Moment from "react-moment";
 import { Link, Redirect } from "react-router-dom";

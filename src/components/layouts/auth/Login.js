@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { signIn } from "../../../store/actions/authActions";
 
 class Login extends Component {
@@ -18,8 +18,7 @@ class Login extends Component {
   };
 
   render() {
-    const { auth } = this.props;
-    const { authError } = this.props;
+    const { authError, auth } = this.props;
     if (auth.uid) return <Redirect to="/" />;
     return (
       <div className="login auth">
@@ -28,6 +27,10 @@ class Login extends Component {
             <div className="col-md-8 m-auto">
               <h1 className="display-4 text-center py-4">Lyricap</h1>
               <h2 className="text-center pb-3">Log In</h2>
+              <p className="testing">
+                For testing purposes, login with email: admin@email.com,
+                password: password
+              </p>
               <form onSubmit={this.hanleSubmit}>
                 <div className="form-group">
                   <input
@@ -57,9 +60,18 @@ class Login extends Component {
                 </div>
               </form>
               <p className="text-center">
-                <a className="text-warning" href="login">
-                  Forget Password <span className="text-light">?</span>
-                </a>
+                New user ?{" "}
+                <Link className="text-light" to="/register">
+                  {" "}
+                  <span className="text-dark">Signup </span>{" "}
+                </Link>
+              </p>
+              <p className="text-center">
+                Forget Password ?{" "}
+                <Link className="text-light" to="/reset">
+                  {" "}
+                  <span className="text-dark">Reset</span>
+                </Link>
               </p>
             </div>
           </div>
@@ -76,10 +88,8 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    signIn: data => dispatch(signIn(data))
-  };
+const mapDispatchToProps = {
+  signIn
 };
 
 export default connect(

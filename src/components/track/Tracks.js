@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getTrackList } from "../../store/actions/trackActions";
-import Spinner from "../layouts/Spinner";
+import Spinner from "../layouts/commons/Spinner";
 import Track from "./Track";
 import Search from "./Search";
 import { Redirect } from "react-router-dom";

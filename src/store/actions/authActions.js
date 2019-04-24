@@ -1,3 +1,13 @@
+import {
+  LOGIN_SUCCESS,
+  SIGNOUT_SUCCESS,
+  SIGNUP_SUCCESS,
+  SIGNUP_ERROR,
+  EMAIL_RESET_SUCCESS,
+  EMAIL_RESET_ERROR,
+  LOGIN_ERROR
+} from "./types";
+
 export const signIn = data => {
   return (dispatch, getState, { getFirebase }) => {
     const firebase = getFirebase();
@@ -6,10 +16,10 @@ export const signIn = data => {
       .auth()
       .signInWithEmailAndPassword(data.email, data.password)
       .then(() => {
-        dispatch({ type: "LOGIN_SUCCESS" });
+        dispatch({ type: LOGIN_SUCCESS });
       })
       .catch(err => {
-        dispatch({ type: "LOGIN_ERROR", err });
+        dispatch({ type: LOGIN_ERROR, err });
       });
   };
 };
@@ -21,7 +31,7 @@ export const signOut = () => {
       .auth()
       .signOut()
       .then(() => {
-        dispatch({ type: "SIGNOUT_SUCCESS" });
+        dispatch({ type: SIGNOUT_SUCCESS });
       });
   };
 };
@@ -45,10 +55,30 @@ export const signUp = newUser => {
           });
       })
       .then(() => {
-        dispatch({ type: "SIGNUP_SUCCESS" });
+        dispatch({ type: SIGNUP_SUCCESS });
       })
       .catch(err => {
-        dispatch({ type: "SIGNUP_ERROR", err });
+        dispatch({ type: SIGNUP_ERROR, err });
+      });
+  };
+};
+
+export const resetPassword = (data, history) => {
+  return (dispatch, getState, { getFirebase }) => {
+    console.log("got here trying");
+
+    const firebase = getFirebase();
+    firebase
+      .auth()
+      .sendPasswordResetEmail(data.email)
+      .then(() => {
+        console.log("got here success");
+        dispatch({ type: EMAIL_RESET_SUCCESS });
+        history.push("/login");
+      })
+      .catch(err => {
+        console.log("got here fail");
+        dispatch({ type: EMAIL_RESET_ERROR, err });
       });
   };
 };
